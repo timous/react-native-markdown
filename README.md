@@ -2,10 +2,6 @@
 
 A component for rendering Markdown in React Native. Pull requests welcome.
 
-## Known issues
-
-- Due to [a bug](https://github.com/facebook/react-native/issues/824) in underlying layout engine for React Native ([facebook/css-layout](https://github.com/facebook/css-layout)), this module will put your application in an infinite loop unless you patch the upstream changes from `css-layout`'s' `Layout.c` and `Layout.h` files.
-
 ## Getting started
 
 1. `npm install react-native-markdown --save`
@@ -16,16 +12,16 @@ All you need is to `require` the `react-native-markdown` module and then use the
 `<Markdown/>` tag.
 
 ```javascript
-var React = require('react-native');
-var {
+import React, {Component} from 'react';
+import {
   AppRegistry,
   StyleSheet,
   View
-} = React;
-var Markdown = require('react-native-markdown');
+} from 'react-native;
+import Markdown from 'react-native-markdown';
 
-var mdApp = React.createClass({
-  render: function() {
+class mdApp extends Component{
+  render() {
     return (
       <View>
         <Markdown>
@@ -40,7 +36,7 @@ var mdApp = React.createClass({
       </View>
     );
   }
-});
+}
 
 AppRegistry.registerComponent('mdApp', () => mdApp);
 ```
