@@ -13,8 +13,8 @@
     "simple-markdown": "git://github.com/Khan/simple-markdown.git"
   },
   "peerDependencies": {
-    "react": "^5.2.1",
-    "react-native": "^0.30.0"
+    "react": "^15.2.1",
+    "react-native": "^0.31.0"
   },
   "keywords": [
     "react",
