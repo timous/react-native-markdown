@@ -17,7 +17,7 @@ import {
   AppRegistry,
   StyleSheet,
   View
-} from 'react-native;
+} from 'react-native';
 import Markdown from 'react-native-markdown';
 
 class mdApp extends Component{
