@@ -1,13 +1,12 @@
-var React = require('react-native');
-var {
+import React,{Component} from 'react';
+import {
   View
-} = React;
-var _ = require('lodash');
-var SimpleMarkdown = require('simple-markdown');
+} from 'react-native';
+import _ from 'lodash';
+import SimpleMarkdown from 'simple-markdown';
 
-var styles = {
-  view: {
-  },
+const styles = {
+  view: {},
   codeBlock: {
     fontFamily: 'Courier',
     fontWeight: '500'
@@ -55,9 +54,7 @@ var styles = {
     fontFamily: 'Courier',
     fontWeight: 'bold'
   },
-  list: {
-
-  },
+  list: {},
   listItem: {
     flexDirection: 'row'
   },
@@ -116,34 +113,36 @@ var styles = {
 };
 
 
-var Markdown = React.createClass({
+class Markdown extends Component {
 
-  getDefaultProps: function() {
-    return {
-      style: styles
-    };
-  },
+  static defaultProps = {
+    style: styles
+  };
 
-  componentWillMount: function() {
+  static propTypes = {
+    style: React.PropTypes.object
+  };
+
+  componentWillMount() {
     var mergedStyles = _.merge({}, styles, this.props.style);
     var rules = require('./rules')(mergedStyles);
     rules = _.merge({}, SimpleMarkdown.defaultRules, rules);
 
     var parser = SimpleMarkdown.parserFor(rules);
-    this.parse = function(source) {
+    this.parse = function (source) {
       var blockSource = source + '\n\n';
       return parser(blockSource, {inline: false});
     };
     this.renderer = SimpleMarkdown.reactFor(SimpleMarkdown.ruleOutput(rules, 'react'));
-  },
+  }
 
-  render: function() {
+  render() {
 
     var child = _.isArray(this.props.children)
       ? this.props.children.join('') : this.props.children;
     var tree = this.parse(child);
     return <View style={[styles.view, this.props.style.view]}>{this.renderer(tree)}</View>;
   }
-});
+}
 
-module.exports = Markdown;
+export default Markdown
