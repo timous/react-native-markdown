@@ -5,7 +5,7 @@ import {
       View,
       } from 'react-native';
 import SimpleMarkdown from 'simple-markdown';
-import _ from 'lodash
+import _ from 'lodash'
 
 module.exports = function (styles) {
   return {
